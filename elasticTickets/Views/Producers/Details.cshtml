@@ -1,0 +1,46 @@
+﻿@model Producer
+
+@{ ViewData["Title"] = "Details of the Producer"; }
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Details for @Model.fullName</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <div class="form-group text-center">
+                    <img class="border-info rounded-circle" style="max-width: 150px" id="ProfilePicturePreview" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="profilePictureURL" class="control-label"></label>
+                    <input asp-for="profilePictureURL" class="form-control" readonly />
+                    <span asp-validation-for="profilePictureURL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="fullName" class="control-label"></label>
+                    <input asp-for="fullName" class="form-control" readonly />
+                    <span asp-validation-for="fullName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="bio" class="control-label"></label>
+                    <input asp-for="bio" class="form-control" readonly />
+                    <span asp-validation-for="bio" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.id">Edit</a>
+
+                    <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>$(document).ready(function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $("#profilePictureURL").val();
+        })</script>
+}
